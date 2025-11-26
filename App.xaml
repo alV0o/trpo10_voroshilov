@@ -1,0 +1,27 @@
+﻿<Application x:Class="trpo7_voroshilov_pr.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:trpo7_voroshilov_pr"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Theme/Default.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/Label.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/TextBlock.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/TextBox.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/Button.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/BackButton.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/RowDefinition.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/WrapPanel.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/ListView.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/RowDefinitionNone.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/AddButton.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/DeleteButton.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/Menu.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/MenuItem.xaml"/>
+                <ResourceDictionary Source="/Styles/UI/FirstAppointment.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

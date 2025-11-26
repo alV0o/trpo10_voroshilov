@@ -1,0 +1,99 @@
+﻿<Page x:Class="trpo7_voroshilov_pr.Pages.AddPatient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:trpo7_voroshilov_pr.Pages"
+      xmlns:validators="clr-namespace:trpo7_voroshilov_pr.Validators"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="AddPatient"
+      Background="{DynamicResource BackgroundApp}">
+
+    <Grid DockPanel.Dock="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="Назад"
+                Click="Back"
+                Style="{StaticResource BackButton}"/>
+
+        <Label Content="Добавление пациента"
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"/>
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Content="Введите фамилию:"/>
+        <Label Grid.Row="3"
+               Grid.Column="0"
+               Content="Введите имя:"/>
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Content="Введите отчество:"/>
+        <Label Grid.Row="5"
+               Grid.Column="0"
+               Content="Введите дату рождения:"/>
+        <Label Grid.Row="6"
+               Grid.Column="0"
+               Content="Введите номер телефона:"/>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1">
+            <TextBox
+                 x:Name="nameTextBox">
+                <TextBox.Text>
+                    <Binding Path="Name">
+                        <Binding.ValidationRules>
+                            <validators:ValidationFIO/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+                    FontSize="12"
+                    ItemsSource="{Binding ElementName=nameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Text="{Binding LastName, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="4"
+                 Grid.Column="1"
+                 Text="{Binding MiddleName, Mode=OneWayToSource}"/>
+        <DatePicker Grid.Row="5"
+                    Grid.Column="1"
+                    Text="{Binding Birthday, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="6"
+                 Grid.Column="1"
+                 Text="{Binding PhoneNumber, Mode=OneWayToSource}"/>
+        <TextBlock Grid.Row="7"
+                   Grid.Column="0"
+                   Style="{StaticResource TextBlockKey}">
+            <Run Text="ID пациента:"/>
+            <Run Text="{Binding ID}"/>
+        </TextBlock>
+        <Button Grid.Column="1"
+                Grid.Row="7"
+                Content="Добавить"
+                Click="AddNewPatient"
+                Style="{StaticResource AddButton}"/>
+    </Grid>
+</Page>
