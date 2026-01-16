@@ -20,7 +20,6 @@
                 <ResourceDictionary Source="/Styles/UI/DeleteButton.xaml"/>
                 <ResourceDictionary Source="/Styles/UI/Menu.xaml"/>
                 <ResourceDictionary Source="/Styles/UI/MenuItem.xaml"/>
-                <ResourceDictionary Source="/Styles/UI/FirstAppointment.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

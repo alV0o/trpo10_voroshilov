@@ -18,12 +18,11 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Назад"
@@ -57,7 +56,7 @@
                 <TextBox.Text>
                     <Binding Path="Name">
                         <Binding.ValidationRules>
-                            <validators:ValidationFIO/>
+                            <validators:ValidationOnlyText/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -72,18 +71,96 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-        <TextBox Grid.Row="3"
-                 Grid.Column="1"
-                 Text="{Binding LastName, Mode=OneWayToSource}"/>
-        <TextBox Grid.Row="4"
-                 Grid.Column="1"
-                 Text="{Binding MiddleName, Mode=OneWayToSource}"/>
-        <DatePicker Grid.Row="5"
-                    Grid.Column="1"
-                    Text="{Binding Birthday, Mode=OneWayToSource}"/>
-        <TextBox Grid.Row="6"
-                 Grid.Column="1"
-                 Text="{Binding PhoneNumber, Mode=OneWayToSource}"/>
+        <StackPanel Grid.Row="3"
+            Grid.Column="1">
+            <TextBox
+                x:Name="lastnameTextBox">
+                <TextBox.Text>
+                    <Binding Path="LastName">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+                FontSize="12"
+                ItemsSource="{Binding ElementName=lastnameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="4"
+                Grid.Column="1">
+            <TextBox
+                x:Name="middlenameTextBox">
+                <TextBox.Text>
+                    <Binding Path="MiddleName">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+                FontSize="12"
+                ItemsSource="{Binding ElementName=middlenameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="5"
+                Grid.Column="1">
+            <DatePicker
+                x:Name="birthdayTextBox"
+                Language="RU-ru">
+                <DatePicker.Text>
+                    <Binding Path="Birthday"
+                             Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <validators:ValidationBirthday/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.Text>
+            </DatePicker>
+            <ItemsControl Foreground="Red"
+                FontSize="12"
+                ItemsSource="{Binding ElementName=birthdayTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="6"
+                    Grid.Column="1">
+            <TextBox
+                x:Name="phoneTextBox">
+                <TextBox.Text>
+                    <Binding Path="PhoneNumber">
+                        <Binding.ValidationRules>
+                            <validators:ValidationPhone/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+                    FontSize="12"
+                    ItemsSource="{Binding ElementName=phoneTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
         <TextBlock Grid.Row="7"
                    Grid.Column="0"
                    Style="{StaticResource TextBlockKey}">

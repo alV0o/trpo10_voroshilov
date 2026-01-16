@@ -8,11 +8,17 @@ using System.Windows.Controls;
 
 namespace trpo7_voroshilov_pr.Validators
 {
-    public class ValidationFIO:ValidationRule
+    public class ValidationOnlyText:ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string input = value.ToString();
+            
+            if (string.IsNullOrEmpty(input))
+            {
+                return new ValidationResult(false, "Ввод обязателен!");
+            }
+
             for (int i = 0; i < input.Length; i++)
             {
                 if (!Char.IsLetter(input[i]))

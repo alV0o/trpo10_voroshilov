@@ -33,7 +33,7 @@ namespace trpo7_voroshilov_pr.Pages
 
         private void AddNewPatient(object sender, RoutedEventArgs e)
         {
-            if (patient.Name.Trim() != "" && patient.LastName.Trim() != "" && patient.MiddleName.Trim() != "")
+            if (!string.IsNullOrEmpty(patient.Name) && !string.IsNullOrEmpty(patient.LastName) && !string.IsNullOrEmpty(patient.MiddleName) && patient.Birthday != null && patient.PhoneNumber != 0)
             {
                 patient.ID = Convert.ToInt32(GenerateUniqueId(7, 'P'));
 

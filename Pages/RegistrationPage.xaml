@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:trpo7_voroshilov_pr.Pages"
+      xmlns:validators="clr-namespace:trpo7_voroshilov_pr.Validators"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegistrationPage"
@@ -52,18 +53,94 @@
             <Run Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
         </TextBlock>
 
-        <TextBox Grid.Row="1"
-                 Grid.Column="1"
-                 Text="{Binding Name, Mode=OneWayToSource}"/>
-        <TextBox Grid.Row="2"
-                 Grid.Column="1"
-                 Text="{Binding LastName, Mode=OneWayToSource}"/>
-        <TextBox Grid.Row="3"
-                 Grid.Column="1"
-                 Text="{Binding MiddleName, Mode=OneWayToSource}"/>
-        <TextBox Grid.Row="4"
-                 Grid.Column="1"
-                 Text="{Binding Specialisation, Mode=OneWayToSource}"/>
+        <StackPanel Grid.Row="1"
+         Grid.Column="1">
+            <TextBox
+         x:Name="nameTextBox">
+                <TextBox.Text>
+                    <Binding Path="Name">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+         FontSize="12"
+         ItemsSource="{Binding ElementName=nameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+        Grid.Column="1">
+            <TextBox
+        x:Name="lastnameTextBox">
+                <TextBox.Text>
+                    <Binding Path="LastName">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+            FontSize="12"
+            ItemsSource="{Binding ElementName=lastnameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="3"
+        Grid.Column="1">
+            <TextBox
+        x:Name="middlenameTextBox">
+                <TextBox.Text>
+                    <Binding Path="MiddleName">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+            FontSize="12"
+            ItemsSource="{Binding ElementName=middlenameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="4"
+                Grid.Column="1">
+            <TextBox
+                x:Name="specTextBox">
+                <TextBox.Text>
+                    <Binding Path="Specialisation">
+                        <Binding.ValidationRules>
+                            <validators:ValidationOnlyText/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Foreground="Red"
+                    FontSize="12"
+                    ItemsSource="{Binding ElementName=specTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
         <TextBox Grid.Row="5"
                  Grid.Column="1"
                  Text="{Binding Password, Mode=OneWayToSource}"/>

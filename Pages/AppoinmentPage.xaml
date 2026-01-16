@@ -87,7 +87,7 @@
         <StackPanel Grid.Column="0"
                   Grid.Row="7"
                   Grid.ColumnSpan="2">
-            <Label Content="Первый прием" Style="{DynamicResource FirstAppointment}"/>
+            <Label Content="{Binding FirstAppointment}"/>
             <ListView
                   ItemsSource="{Binding AppointmentStories}"
                   SelectedItem="{Binding SelectedAppointment}">

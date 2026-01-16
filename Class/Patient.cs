@@ -126,6 +126,9 @@ namespace trpo7_voroshilov_pr.Class
         [JsonIgnore]
         public Appointment SelectedAppointment {  get; set; }
 
+        [JsonIgnore]
+        public string FirstAppointment { get; set; }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string? propName = null)

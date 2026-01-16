@@ -39,13 +39,21 @@ namespace trpo7_voroshilov_pr.Pages
                     string jsonString = File.ReadAllText(fileName);
                     patient.AppointmentStories[i].DoctorObj = JsonSerializer.Deserialize<Doctor>(jsonString);
                 }
+                if (patient.AppointmentStories.Count == 0)
+                {
+                    patient.FirstAppointment = "Первый прием";
+                }
+                else
+                {
+                    patient.FirstAppointment = $"С последнего посещения прошло: {(DateTime.Now - Convert.ToDateTime(patient.AppointmentStories[patient.AppointmentStories.Count - 1].Date).Date).Days} дней";
+                }
             }
             DataContext = patient;
         }
 
         private void RegisterAppointment(object sender, RoutedEventArgs e)
         {
-            if (patient.Diagnosis.Trim() == "" || patient.Recomendations.Trim() == "")
+            if (string.IsNullOrEmpty(patient.Diagnosis) || string.IsNullOrEmpty(patient.Recomendations))
             {
                 MessageBox.Show("Заполните все поля!");
                 return;

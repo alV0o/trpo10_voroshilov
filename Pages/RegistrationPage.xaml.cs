@@ -33,7 +33,7 @@ namespace trpo7_voroshilov_pr.Pages
 
         private void RegisterNewDoctor(object sender, RoutedEventArgs e)
         {
-            if (doctor.Password.Trim() != "" && doctor.Name.Trim() != "" && doctor.LastName.Trim() != "" && doctor.Specialisation.Trim() != "" && doctor.MiddleName.Trim() != "")
+            if (!string.IsNullOrEmpty(doctor.Name) && !string.IsNullOrEmpty(doctor.LastName) && !string.IsNullOrEmpty(doctor.MiddleName) && !string.IsNullOrEmpty(doctor.Specialisation) && !string.IsNullOrEmpty(doctor.Password))
             {
                 if (doctor.Password == doctor.RepeatPassword)
                 {

@@ -86,10 +86,10 @@
                                 <Label Content="Дата рождения:"/>
                                 <Label Content="{Binding Birthday}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Телефон:"/>
-                                <Label Content="{Binding PhoneNumber}"/>
-                            </StackPanel>
+                            <TextBlock Grid.Row="3">
+                                <Run Text="Телефон:"/>
+                                <Run Text="{Binding PhoneNumber, StringFormat={}{0:# (###) ### ## ##}}"/>
+                            </TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

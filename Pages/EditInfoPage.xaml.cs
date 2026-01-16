@@ -48,9 +48,17 @@ namespace trpo7_voroshilov_pr.Pages
 
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
-            string fileName = $"P_{patient.ID.ToString().PadLeft(7, '0')}.json";
-            string jsonString = JsonSerializer.Serialize(patient);
-            File.WriteAllText(fileName, jsonString);
+            if (!string.IsNullOrEmpty(patient.Name) && !string.IsNullOrEmpty(patient.LastName) && !string.IsNullOrEmpty(patient.MiddleName) && patient.Birthday != null && patient.PhoneNumber != 0)
+            {
+                string fileName = $"P_{patient.ID.ToString().PadLeft(7, '0')}.json";
+                string jsonString = JsonSerializer.Serialize(patient);
+                File.WriteAllText(fileName, jsonString);
+                MessageBox.Show("Успешно изменен!");
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
         }
         
         private void Back(object sender, RoutedEventArgs e)
