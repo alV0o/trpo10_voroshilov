@@ -84,7 +84,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Дата рождения:"/>
-                                <Label Content="{Binding Birthday}"/>
+                                <Label Language="RU-ru" Content="{Binding Birthday}"/>
                             </StackPanel>
                             <TextBlock Grid.Row="3">
                                 <Run Text="Телефон:"/>

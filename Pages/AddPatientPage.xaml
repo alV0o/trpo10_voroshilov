@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:trpo7_voroshilov_pr.Pages"
       xmlns:validators="clr-namespace:trpo7_voroshilov_pr.Validators"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       Title="AddPatient"
@@ -119,7 +120,9 @@
                 Grid.Column="1">
             <DatePicker
                 x:Name="birthdayTextBox"
-                Language="RU-ru">
+                Language="RU-ru"
+                DisplayDateStart="01.01.1900"
+                SelectedDate="{x:Static sys:DateTime.Now}">
                 <DatePicker.Text>
                     <Binding Path="Birthday"
                              Mode="OneWayToSource">
